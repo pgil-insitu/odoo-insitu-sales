@@ -77,7 +77,7 @@ The visible result has a clear headline, readable supporting copy, two distinct 
 ## Interaction and implementation checks
 
 - The “See what synchronizes” action navigates to `#insitu-sync`, and the destination aligns at the top of the viewport.
-- Both “Book a Demo” actions resolve to the same pre-addressed `mailto:info@insitusales.com` demo request.
+- Both “Book a Demo” actions resolve to the same pre-addressed `mailto:sales@insitusales.com` demo request.
 - All three images loaded successfully with non-zero natural dimensions and meaningful alt text.
 - Browser console warnings/errors: none.
 - Static addon validation: passed for 13 Python files, 11 XML files, 4 ACL entries, and required marketplace assets.
