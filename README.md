@@ -1,8 +1,8 @@
 # inSitu Sales Connector for Odoo
 
-An Odoo 16+ integration for inSitu Sales. Odoo Online SaaS connects directly
-through Odoo's external API without installing an addon. Odoo.sh and on-premise
-deployments can install this addon to add an Odoo-side control surface.
+An Odoo 16+ integration for inSitu Sales. The only supported connection method
+is to configure Odoo in the inSitu Sales website with the required external API
+parameters. Hosting type or addon installation does not replace that setup.
 
 inSitu Sales is operational software for wholesale distributors. The connector
 keeps Odoo as the ERP system of record while inSitu Sales supports field sales,
@@ -24,13 +24,13 @@ The addon does **not** store an inSitu password or duplicate the synchronization
 engine. The inSitu service initiates synchronization through Odoo's authenticated
 remote API, matching the production connector architecture.
 
-## Supported Odoo versions and hosting
+## Supported Odoo versions and environments
 
 - Odoo 16, 17, 18, and 19
-- Odoo Online SaaS through the external API; no addon installation is required
-- Odoo.sh and on-premise installations with this connector addon
-- Community and Enterprise editions where the selected deployment provides the
-  required external API access
+- Odoo Online SaaS, Odoo.sh, and on-premise environments only when they provide
+  the required external API access
+- Community and Enterprise editions only when all required connection
+  parameters can be entered and validated in inSitu Sales
 
 Each Odoo major release is maintained on a matching Git branch (`16.0`, `17.0`,
 `18.0`, or `19.0`) with an Odoo-specific manifest and backend view definitions.
@@ -39,7 +39,8 @@ The red **Odoo Online** availability indicator on the Odoo Apps page describes
 where this Python addon can be installed. It does not describe the availability
 of the inSitu Sales integration. Odoo Online does not install the addon; inSitu
 Sales connects to the hosted database through Odoo's external API. Odoo Online
-external API access requires an Odoo Custom plan.
+external API access requires an Odoo Custom plan. The Odoo Apps badge, hosting
+type, or successful addon installation does not by itself establish support.
 
 ## Configure the integration in inSitu Sales
 
@@ -56,13 +57,23 @@ For Odoo Online, Odoo.sh, and on-premise deployments:
    companies.
 5. Select **Company**, then save and validate the integration.
 
+This parameter-based setup is the **only supported integration method**. An
+Odoo version or deployment is unsupported if the customer cannot provide these
+parameters, the company list cannot be loaded, or the connection cannot be
+validated through Odoo's external API.
+
 Use a dedicated integration user with only the Sales, Inventory, Accounting,
 and contact permissions required for the data being synchronized. Treat an API
 key like a password and provide it only through the secure integration form.
 
-## Optional addon installation for Odoo.sh and on-premise
+## Repository addon
 
-Skip this section for Odoo Online SaaS.
+This repository also contains an optional Odoo-side control surface for
+technical teams that can install Python addons. Installing it is not a
+substitute for configuring **Integration > Odoo** in the inSitu Sales website
+and does not make an otherwise incompatible environment supported. Skip this
+section for Odoo Online SaaS or whenever the customer does not manage custom
+Odoo addons.
 
 1. Copy `insitu_sales_connector` into an Odoo addons path.
 2. Update the Apps list.
