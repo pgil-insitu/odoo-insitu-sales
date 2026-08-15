@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_insitu_root" name="inSitu Sales" sequence="35" groups="insitu_sales_connector.group_insitu_integration" web_icon="insitu_sales_connector,static/description/icon.png"/>
+    <menuitem id="menu_insitu_operations" name="Operations" parent="menu_insitu_root" sequence="10"/>
+    <menuitem id="menu_insitu_sync_logs" name="Synchronization Logs" parent="menu_insitu_operations" action="action_insitu_sync_log" sequence="10"/>
+    <menuitem id="menu_insitu_configuration" name="Configuration" parent="menu_insitu_root" sequence="90" groups="insitu_sales_connector.group_insitu_manager"/>
+    <menuitem id="menu_insitu_profiles" name="Connector Profiles" parent="menu_insitu_configuration" action="action_insitu_connector_profile" sequence="10"/>
+</odoo>

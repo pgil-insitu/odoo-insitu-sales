@@ -1,0 +1,32 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: odoo
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U odoo -d postgres"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  odoo-test:
+    image: odoo:${ODOO_VERSION:-19.0}
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./:/mnt/extra-addons:ro
+    command:
+      - odoo
+      - --database=insitu_connector_test
+      - --db_host=db
+      - --db_user=odoo
+      - --db_password=odoo
+      - --addons-path=/usr/lib/python3/dist-packages/odoo/addons,/mnt/extra-addons
+      - --init=insitu_sales_connector
+      - --test-enable
+      - --test-tags=/insitu_sales_connector
+      - --stop-after-init
+      - --log-level=test

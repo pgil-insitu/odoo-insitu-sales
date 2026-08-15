@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_product_product_form_insitu" model="ir.ui.view">
+        <field name="name">product.product.form.inSitu</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet" position="inside">
+                <group string="inSitu Sales" groups="insitu_sales_connector.group_insitu_integration">
+                    <field name="insitu_origin"/>
+                    <field name="insitu_external_id"/>
+                    <field name="insitu_last_sync_at" readonly="1"/>
+                    <field name="insitu_sync_status" widget="badge"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

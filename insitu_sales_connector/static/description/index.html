@@ -1,0 +1,172 @@
+<style>
+  .insitu-marketplace {
+    --ink: #201c24; --muted: #665f6a; --surface: #ffffff;
+    --surface-soft: #f6f5f7; --line: #e4e0e6; --brand: #d82f5b;
+    --brand-dark: #ad1f46; --odoo: #714b67; --success: #237a56;
+    color: var(--ink); background: var(--surface);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    font-size: 16px; line-height: 1.6; overflow: hidden;
+  }
+  .insitu-marketplace * { box-sizing: border-box; }
+  .insitu-marketplace img { display: block; max-width: 100%; height: auto; }
+  .insitu-marketplace a { color: inherit; }
+  .insitu-shell { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+  .insitu-hero { padding: 72px 0 36px; }
+  .insitu-hero-grid { display: grid; grid-template-columns: minmax(0, .86fr) minmax(420px, 1.14fr); gap: 56px; align-items: center; }
+  .insitu-eyebrow { display: inline-block; margin: 0 0 18px; color: var(--brand-dark); font-size: 13px; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+  .insitu-marketplace h1, .insitu-marketplace h2, .insitu-marketplace h3, .insitu-marketplace p { margin-top: 0; }
+  .insitu-marketplace h1 { margin-bottom: 22px; font-size: clamp(42px, 5vw, 68px); line-height: 1.02; letter-spacing: -.045em; }
+  .insitu-marketplace h2 { margin-bottom: 18px; font-size: clamp(30px, 3.4vw, 44px); line-height: 1.12; letter-spacing: -.03em; }
+  .insitu-marketplace h3 { margin-bottom: 10px; font-size: 20px; line-height: 1.3; }
+  .insitu-lead { margin-bottom: 28px; color: var(--muted); font-size: 20px; line-height: 1.55; }
+  .insitu-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .insitu-button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 11px 20px; border: 1px solid var(--brand); border-radius: 8px; background: var(--brand); color: #fff !important; font-weight: 700; text-decoration: none; }
+  .insitu-button:hover, .insitu-button:focus { border-color: var(--brand-dark); background: var(--brand-dark); text-decoration: none; }
+  .insitu-button-secondary { border-color: var(--line); background: var(--surface); color: var(--ink) !important; }
+  .insitu-button-secondary:hover, .insitu-button-secondary:focus { border-color: var(--odoo); background: var(--surface-soft); }
+  .insitu-hero-media { overflow: hidden; border: 1px solid var(--line); border-radius: 22px; background: #f2f3f5; box-shadow: 0 24px 60px rgba(37,25,36,.12); }
+  .insitu-hero-media img { width: 100%; }
+  .insitu-proof { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 36px 0 0; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+  .insitu-proof-item { padding: 20px 22px; border-right: 1px solid var(--line); }
+  .insitu-proof-item:last-child { border-right: 0; }
+  .insitu-proof-label { display: block; margin-bottom: 4px; color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .insitu-proof-value { display: block; font-size: 16px; font-weight: 700; }
+  .insitu-section { padding: 84px 0; }
+  .insitu-section-soft { background: var(--surface-soft); }
+  .insitu-section-heading { max-width: 760px; margin: 0 auto 42px; text-align: center; }
+  .insitu-section-heading p { margin-bottom: 0; color: var(--muted); font-size: 18px; }
+  .insitu-card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .insitu-card { padding: 28px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+  .insitu-card-number { display: block; margin-bottom: 28px; color: var(--brand); font-size: 13px; font-weight: 800; letter-spacing: .08em; }
+  .insitu-card p { margin-bottom: 0; color: var(--muted); }
+  .insitu-split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 72px; align-items: center; }
+  .insitu-media-card { overflow: hidden; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); box-shadow: 0 20px 48px rgba(37,25,36,.1); }
+  .insitu-media-card img, .insitu-sync-card img { width: 100%; }
+  .insitu-copy p { color: var(--muted); font-size: 18px; }
+  .insitu-list { margin: 28px 0 0; padding-left: 22px; }
+  .insitu-list li { margin: 0; padding: 15px 0 15px 6px; border-top: 1px solid var(--line); font-weight: 650; }
+  .insitu-list li::marker { color: var(--success); }
+  .insitu-record-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  .insitu-record-group { padding: 30px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+  .insitu-record-group h3 { color: var(--odoo); }
+  .insitu-record-group ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 18px; margin: 20px 0 0; padding: 0; list-style: none; }
+  .insitu-record-group li { padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+  .insitu-sync-card { padding: 26px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); }
+  .insitu-note { margin-top: 24px; padding: 18px 20px; border-left: 4px solid var(--odoo); background: var(--surface-soft); color: var(--muted); }
+  .insitu-cta { padding: 76px 0; background: var(--ink); color: #fff; }
+  .insitu-cta-grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 40px; align-items: center; }
+  .insitu-cta h2 { margin-bottom: 12px; color: #fff; }
+  .insitu-cta p { max-width: 760px; margin-bottom: 0; color: #d8d3db; font-size: 18px; }
+  .insitu-cta .insitu-button { min-width: 190px; }
+  .insitu-footnote { padding: 24px 0; color: var(--muted); font-size: 14px; text-align: center; }
+  @media (max-width: 900px) {
+    .insitu-hero { padding-top: 48px; }
+    .insitu-hero-grid, .insitu-split { grid-template-columns: 1fr; gap: 40px; }
+    .insitu-hero-copy { max-width: 720px; }
+    .insitu-proof, .insitu-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .insitu-proof-item:nth-child(2) { border-right: 0; }
+    .insitu-proof-item:nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
+    .insitu-card:last-child { grid-column: 1 / -1; }
+  }
+  @media (max-width: 620px) {
+    .insitu-shell { width: min(100% - 28px, 1120px); }
+    .insitu-hero { padding: 36px 0 24px; }
+    .insitu-marketplace h1 { font-size: 42px; }
+    .insitu-lead { font-size: 18px; }
+    .insitu-actions, .insitu-button { width: 100%; }
+    .insitu-proof, .insitu-card-grid, .insitu-record-grid, .insitu-record-group ul, .insitu-cta-grid { grid-template-columns: 1fr; }
+    .insitu-proof-item, .insitu-proof-item:nth-child(2) { border-right: 0; border-bottom: 1px solid var(--line); }
+    .insitu-proof-item:last-child { border-bottom: 0; }
+    .insitu-card:last-child { grid-column: auto; }
+    .insitu-section { padding: 60px 0; }
+    .insitu-cta { padding: 56px 0; }
+    .insitu-cta .insitu-button { min-width: 0; }
+  }
+</style>
+
+<main class="insitu-marketplace">
+  <section class="insitu-hero" aria-labelledby="insitu-title">
+    <div class="insitu-shell">
+      <div class="insitu-hero-grid">
+        <div class="insitu-hero-copy">
+          <span class="insitu-eyebrow">Odoo 16+ connector</span>
+          <h1 id="insitu-title">DSD, presales, and B2B ecommerce&mdash;connected to Odoo.</h1>
+          <p class="insitu-lead">Give route sales teams, presales reps, and B2B customers access to inventory availability and customer-specific pricing. Field reps can keep taking orders in the mobile app online or offline.</p>
+          <div class="insitu-actions">
+            <a class="insitu-button" href="mailto:info@insitusales.com?subject=inSitu%20Sales%20Odoo%20Demo&amp;body=I%27d%20like%20to%20book%20a%20demo%20of%20the%20inSitu%20Sales%20Connector%20for%20Odoo.">Book a Demo</a>
+            <a class="insitu-button insitu-button-secondary" href="#insitu-sync">See what synchronizes</a>
+          </div>
+        </div>
+        <div class="insitu-hero-media"><img src="cover.png" alt="inSitu Sales DSD, presales, and B2B ecommerce operations connected with Odoo"/></div>
+      </div>
+      <div class="insitu-proof" aria-label="Connector compatibility">
+        <div class="insitu-proof-item"><span class="insitu-proof-label">Versions</span><span class="insitu-proof-value">Odoo 16, 17, 18 + 19</span></div>
+        <div class="insitu-proof-item"><span class="insitu-proof-label">Editions</span><span class="insitu-proof-value">Community + Enterprise</span></div>
+        <div class="insitu-proof-item"><span class="insitu-proof-label">Hosting</span><span class="insitu-proof-value">Odoo.sh + on-premise</span></div>
+        <div class="insitu-proof-item"><span class="insitu-proof-label">Selling motions</span><span class="insitu-proof-value">DSD + presales + B2B</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="insitu-section insitu-section-soft" id="insitu-channels" aria-labelledby="insitu-control-title">
+    <div class="insitu-shell">
+      <div class="insitu-section-heading">
+        <span class="insitu-eyebrow">Three connected selling motions</span>
+        <h2 id="insitu-control-title">Serve every way wholesale customers buy.</h2>
+        <p>Whether an order starts on a route, with a presales rep, or in the B2B portal, each team works from synchronized customer, product, inventory, and pricing data.</p>
+      </div>
+      <div class="insitu-card-grid">
+        <article class="insitu-card"><span class="insitu-card-number">01 / DSD</span><h3>Sell and deliver on route</h3><p>Help route teams work online or offline as they check available inventory and account pricing, capture orders, invoice customers, and support delivery workflows.</p></article>
+        <article class="insitu-card"><span class="insitu-card-number">02 / PRESALES</span><h3>Capture the next order</h3><p>Give presales reps the customer history, product availability, and negotiated pricing they need to build accurate orders before fulfillment.</p></article>
+        <article class="insitu-card"><span class="insitu-card-number">03 / B2B ECOMMERCE</span><h3>Let customers order anytime</h3><p>Give authorized buyers a self-service catalog with their pricing and inventory visibility so replenishment does not wait for a sales visit.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="insitu-section" aria-labelledby="insitu-operations-title">
+    <div class="insitu-shell insitu-split">
+      <div class="insitu-media-card"><img src="mobile-suite.png" alt="inSitu Sales mobile app showing warehouse picking, order entry, and route execution"/></div>
+      <div class="insitu-copy">
+        <span class="insitu-eyebrow">Inventory and pricing everywhere</span>
+        <h2 id="insitu-operations-title">One product data foundation across every order channel.</h2>
+        <p>Connect selling workflows to the Odoo data that determines what can be sold, to whom, and at what price.</p>
+        <ul class="insitu-list"><li>Online and offline mobile workflows for DSD and presales</li><li>Inventory availability by product and warehouse</li><li>Customer-specific pricing and assigned price lists</li><li>Customers, products, orders, invoices, and payments synchronized with Odoo</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="insitu-section insitu-section-soft" aria-labelledby="insitu-records-title">
+    <div class="insitu-shell">
+      <div class="insitu-section-heading">
+        <span class="insitu-eyebrow">The data behind every order</span>
+        <h2 id="insitu-records-title">Keep availability, pricing, customers, and transactions aligned.</h2>
+        <p>The connector maps the commercial and operational data required across DSD, presales, and B2B ecommerce.</p>
+      </div>
+      <div class="insitu-record-grid">
+        <div class="insitu-record-group"><h3>Inventory and pricing</h3><ul><li>Products</li><li>Warehouses</li><li>Inventory</li><li>Price lists</li><li>Customer pricing</li><li>Taxes</li></ul></div>
+        <div class="insitu-record-group"><h3>Customers and orders</h3><ul><li>Customers</li><li>Delivery addresses</li><li>Sales orders</li><li>Order lines</li><li>Invoices</li><li>Payments</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="insitu-section" id="insitu-sync" aria-labelledby="insitu-sync-title">
+    <div class="insitu-shell insitu-split">
+      <div class="insitu-copy">
+        <span class="insitu-eyebrow">One connected operation</span>
+        <h2 id="insitu-sync-title">Keep every selling channel aligned with Odoo.</h2>
+        <p>DSD, presales, and B2B ecommerce share the same customer, product, inventory, and pricing foundation. Customers and transactions can move in both directions while Odoo remains the source of record.</p>
+        <div class="insitu-note">The authenticated inSitu service initiates synchronization; this addon does not store inSitu credentials or API keys.</div>
+      </div>
+      <div class="insitu-sync-card"><img src="sync-map.png" alt="Data synchronization directions between Odoo and inSitu Sales"/></div>
+    </div>
+  </section>
+
+  <section class="insitu-cta" aria-labelledby="insitu-cta-title">
+    <div class="insitu-shell insitu-cta-grid">
+      <div><span class="insitu-eyebrow">Integration onboarding required</span><h2 id="insitu-cta-title">Connect DSD, presales, and B2B ordering to Odoo.</h2><p>An active inSitu Sales subscription is required. Our team will help confirm compatibility and configure credentials through an approved support channel.</p></div>
+      <a class="insitu-button" href="mailto:info@insitusales.com?subject=inSitu%20Sales%20Odoo%20Demo&amp;body=I%27d%20like%20to%20book%20a%20demo%20of%20the%20inSitu%20Sales%20Connector%20for%20Odoo.">Book a Demo</a>
+    </div>
+  </section>
+
+  <footer class="insitu-footnote"><div class="insitu-shell">inSitu Sales Connector for DSD, presales, and B2B ecommerce on Odoo 16 and later supported releases.</div></footer>
+</main>

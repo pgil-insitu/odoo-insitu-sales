@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_insitu_profile_user,inSitu connector profile user,model_insitu_connector_profile,group_insitu_integration,1,0,0,0
+access_insitu_profile_manager,inSitu connector profile manager,model_insitu_connector_profile,group_insitu_manager,1,1,1,1
+access_insitu_log_user,inSitu sync log user,model_insitu_sync_log,group_insitu_integration,1,0,0,0
+access_insitu_log_manager,inSitu sync log manager,model_insitu_sync_log,group_insitu_manager,1,1,1,1

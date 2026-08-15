@@ -1,0 +1,26 @@
+name: Validate Odoo addon
+
+on:
+  pull_request:
+  push:
+    branches: [main, "16.0", "17.0", "18.0", "19.0"]
+
+jobs:
+  static-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: ./scripts/validate.sh
+
+  odoo-installation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read target Odoo version
+        run: |
+          ODOO_VERSION=$(python3 -c 'import ast; manifest = ast.literal_eval(open("insitu_sales_connector/__manifest__.py").read()); print(".".join(manifest["version"].split(".")[:2]))')
+          echo "ODOO_VERSION=$ODOO_VERSION" >> "$GITHUB_ENV"
+      - run: docker compose up --abort-on-container-exit --exit-code-from odoo-test odoo-test
