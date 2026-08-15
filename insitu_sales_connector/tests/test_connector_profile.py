@@ -13,7 +13,7 @@ class TestConnectorProfile(TransactionCase):
         cls.contact_group = cls.env.ref("base.group_partner_manager")
         cls.env.user.write(
             {
-                "group_ids": [
+                "groups_id": [
                     Command.link(cls.manager_group.id),
                     Command.link(cls.sales_group.id),
                     Command.link(cls.stock_group.id),
@@ -26,7 +26,7 @@ class TestConnectorProfile(TransactionCase):
                 "login": "insitu-connector-test",
                 "company_id": cls.env.company.id,
                 "company_ids": [Command.set([cls.env.company.id])],
-                "group_ids": [
+                "groups_id": [
                     Command.set(
                         [
                             cls.env.ref(
