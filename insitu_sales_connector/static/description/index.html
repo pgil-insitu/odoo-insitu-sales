@@ -18,7 +18,7 @@
       <div class="row mt-5 text-center">
         <div class="col-6 col-lg-3 mb-3"><div class="border rounded h-100 p-3"><small class="text-uppercase text-muted font-weight-bold">Versions</small><div class="font-weight-bold mt-1">Odoo 16, 17, 18 + 19</div></div></div>
         <div class="col-6 col-lg-3 mb-3"><div class="border rounded h-100 p-3"><small class="text-uppercase text-muted font-weight-bold">Editions</small><div class="font-weight-bold mt-1">Community + Enterprise</div></div></div>
-        <div class="col-6 col-lg-3 mb-3"><div class="border rounded h-100 p-3"><small class="text-uppercase text-muted font-weight-bold">Integration</small><div class="font-weight-bold mt-1">Online + Odoo.sh + on-premise</div></div></div>
+        <div class="col-6 col-lg-3 mb-3"><div class="border rounded h-100 p-3"><small class="text-uppercase text-muted font-weight-bold">Integration</small><div class="font-weight-bold mt-1">External API parameters</div></div></div>
         <div class="col-6 col-lg-3 mb-3"><div class="border rounded h-100 p-3"><small class="text-uppercase text-muted font-weight-bold">Selling motions</small><div class="font-weight-bold mt-1">DSD + presales + B2B</div></div></div>
       </div>
     </div>
@@ -27,16 +27,16 @@
   <section class="oe_container py-5" style="background-color: #f3eef2;">
     <div class="container">
       <div class="text-center mx-auto mb-5">
-        <p class="text-uppercase font-weight-bold mb-2" style="color: #714b67; letter-spacing: 0.08em;">Odoo Online supported</p>
+        <p class="text-uppercase font-weight-bold mb-2" style="color: #714b67; letter-spacing: 0.08em;">The supported connection method</p>
         <h2 class="font-weight-bold">Connect from the inSitu Sales website.</h2>
-        <p class="lead text-muted">Odoo Online does not need this addon installed. inSitu Sales connects to Odoo Online, Odoo.sh, and on-premise deployments through Odoo's authenticated external API.</p>
+        <p class="lead text-muted">For Odoo Online, Odoo.sh, and on-premise environments, support requires a successful connection through Odoo's authenticated external API using every parameter below.</p>
       </div>
       <div class="row">
         <div class="col-lg-5 mb-4">
           <div class="bg-white border rounded h-100 p-4">
-            <h3 class="h4 font-weight-bold mb-3">Odoo Online SaaS</h3>
-            <p class="text-muted">No addon installation is required. Odoo Online external API access requires an Odoo Custom plan.</p>
-            <p class="mb-0"><strong>Important:</strong> the Odoo Apps availability badge describes where this optional Python addon can be installed, not where the inSitu Sales integration can connect.</p>
+            <h3 class="h4 font-weight-bold mb-3">Compatibility requirement</h3>
+            <p class="text-muted">The hosting type does not determine support. Odoo Online, Odoo.sh, and on-premise are supported only when the customer can provide all connection parameters and the integration validates successfully. Odoo Online external API access requires an Odoo Custom plan.</p>
+            <p class="mb-0"><strong>Important:</strong> installing this optional Python addon does not replace the required inSitu Sales configuration and does not make an incompatible environment supported.</p>
           </div>
         </div>
         <div class="col-lg-7 mb-4">
@@ -47,7 +47,7 @@
               <div class="col-sm-6"><p class="border-bottom pb-2"><strong>Username</strong></p><p class="border-bottom pb-2"><strong>Password or API key</strong></p><p class="border-bottom pb-2"><strong>URL</strong></p></div>
               <div class="col-sm-6"><p class="border-bottom pb-2"><strong>Database Name</strong></p><p class="border-bottom pb-2"><strong>Company</strong></p><p class="border-bottom pb-2"><strong>Save and validate</strong></p></div>
             </div>
-            <p class="mb-0 text-muted">Save the authentication settings first to load the available company list. A dedicated integration user and API key are recommended.</p>
+            <p class="mb-0 text-muted">Save the authentication settings first to load the available company list. If the parameters cannot be entered, the company list cannot load, or validation fails, that Odoo environment is not supported. A dedicated integration user and API key are recommended.</p>
           </div>
         </div>
       </div>
@@ -109,7 +109,7 @@
           <p class="text-uppercase font-weight-bold mb-2" style="color: #ad1f46; letter-spacing: 0.08em;">One connected operation</p>
           <h2 class="font-weight-bold mb-3">Keep every selling channel aligned with Odoo.</h2>
           <p class="lead text-muted">DSD, presales, and B2B ecommerce share the same customer, product, inventory, and pricing foundation. Customers and transactions can move in both directions while Odoo remains the source of record.</p>
-          <div class="bg-light border-left p-4 mt-4" style="border-color: #714b67 !important;">The authenticated inSitu service initiates synchronization; this addon does not store inSitu credentials or API keys.</div>
+          <div class="bg-light border-left p-4 mt-4" style="border-color: #714b67 !important;">The authenticated inSitu service initiates synchronization through the configured external API connection. The required parameters must be entered and validated in the inSitu Sales website.</div>
         </div>
         <div class="col-lg-6 mt-4 mt-lg-0"><div class="border rounded p-3"><img class="img-fluid" src="sync-map.png" alt="Data synchronization directions between Odoo and inSitu Sales"/></div></div>
       </div>
