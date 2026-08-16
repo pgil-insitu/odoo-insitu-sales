@@ -1,52 +1,44 @@
 # inSitu Sales Connector for Odoo
 
-An Odoo 16+ integration for inSitu Sales. The only supported connection method
-is to configure Odoo in the inSitu Sales website with the required external API
-parameters. Hosting type or addon installation does not replace that setup.
+An Odoo 16+ integration launcher for inSitu Sales. The Marketplace package is
+an Odoo Online-compatible data module: it contains no runtime Python code and
+opens the external inSitu Sales application where the connection is configured.
 
-inSitu Sales is operational software for wholesale distributors. The connector
-keeps Odoo as the ERP system of record while inSitu Sales supports field sales,
-DSD, mobile invoicing, inventory visibility, and B2B ordering.
+inSitu Sales is operational software for wholesale distributors. The external
+connector keeps Odoo as the ERP system of record while inSitu Sales supports
+field sales, DSD, presales, mobile invoicing, inventory visibility, offline
+order taking, and B2B ecommerce.
 
-## What the addon provides
+## What the Marketplace app provides
 
-- A per-company connector profile with the exact Odoo URL, database, and login
-  details needed by the inSitu integration team.
-- A dedicated Odoo security role for the integration service user.
-- Readiness validation before credentials are configured in inSitu Sales.
-- Multi-company-safe synchronization logs and last-run status.
-- Source and external-reference metadata on customers, products, sales orders,
-  order lines, invoices, and stock transfers.
-- RPC methods for connector health checks and persisted synchronization results.
-- Automatic retention cleanup for old synchronization logs.
+- An **inSitu Sales** app in the Odoo launcher.
+- **Open inSitu Sales**, which opens the authenticated inSitu Sales website.
+- **Odoo Integration Guide**, which opens the official integration overview.
+- A Python-free/importable package compatible with Odoo Online, Odoo.sh, and
+  on-premise installations.
 
-The addon does **not** store an inSitu password or duplicate the synchronization
-engine. The inSitu service initiates synchronization through Odoo's authenticated
-remote API, matching the production connector architecture.
+The Marketplace app does not store credentials, add Odoo models, or run a
+second synchronization engine. The authenticated inSitu service initiates
+synchronization through Odoo's external API after the required connection is
+configured in inSitu Sales.
 
 ## Supported Odoo versions and environments
 
 - Odoo 16, 17, 18, and 19
 - Odoo Online SaaS, Odoo.sh, and on-premise environments only when they provide
   the required external API access
-- Community and Enterprise editions only when all required connection
-  parameters can be entered and validated in inSitu Sales
+- Community and Enterprise editions only when every required connection
+  parameter can be entered and validated in inSitu Sales
 
-Each Odoo major release is maintained on a matching Git branch (`16.0`, `17.0`,
-`18.0`, or `19.0`) with an Odoo-specific manifest and backend view definitions.
-
-The red **Odoo Online** availability indicator on the Odoo Apps page describes
-where this Python addon can be installed. It does not describe the availability
-of the inSitu Sales integration. Odoo Online does not install the addon; inSitu
-Sales connects to the hosted database through Odoo's external API. Odoo Online
-external API access requires an Odoo Custom plan. The Odoo Apps badge, hosting
-type, or successful addon installation does not by itself establish support.
+Odoo Online external API access requires an Odoo Custom plan. The hosting type
+or successful Marketplace app installation does not by itself establish
+integration support.
 
 ## Configure the integration in inSitu Sales
 
-For Odoo Online, Odoo.sh, and on-premise deployments:
+For every supported Odoo environment:
 
-1. Sign in to the **inSitu Sales website**.
+1. Sign in to the [inSitu Sales website](https://app.insitusales.com/).
 2. Open **Integration > Odoo**.
 3. Enter the Odoo connection parameters:
    - **Username**: the login for a dedicated Odoo integration user.
@@ -64,32 +56,20 @@ validated through Odoo's external API.
 
 Use a dedicated integration user with only the Sales, Inventory, Accounting,
 and contact permissions required for the data being synchronized. Treat an API
-key like a password and provide it only through the secure integration form.
+key like a password and enter it only in the secure integration form.
 
-## Repository addon
+## Install the Marketplace app
 
-This repository also contains an optional Odoo-side control surface for
-technical teams that can install Python addons. Installing it is not a
-substitute for configuring **Integration > Odoo** in the inSitu Sales website
-and does not make an otherwise incompatible environment supported. Skip this
-section for Odoo Online SaaS or whenever the customer does not manage custom
-Odoo addons.
+Install the release matching the Odoo major version. Open **inSitu Sales** from
+the Odoo app launcher, then choose **Open inSitu Sales** and complete
+**Integration > Odoo** using the steps above.
 
-1. Copy `insitu_sales_connector` into an Odoo addons path.
-2. Update the Apps list.
-3. Install **inSitu Sales Connector**.
-4. Open **inSitu Sales > Configuration > Connector Profiles**.
-5. Select a dedicated internal Odoo user and grant it Contact Creation plus the
-   normal Sales, Inventory, and Accounting permissions required for the entities
-   you want to synchronize, as well as the **inSitu Sales / Integration
-   Service** role.
-6. Select **Validate Setup**.
-7. Complete **Integration > Odoo** in the inSitu Sales website using the
-   connection steps above. Secrets are never displayed or persisted by this
-   addon.
+The app is intentionally an importable/data module. It does not require a
+custom Python addon path and can be imported on Odoo Online through Odoo's
+standard app import flow.
 
 See [doc/index.rst](insitu_sales_connector/doc/index.rst) for administrator and
-integration-reference documentation.
+integration documentation.
 
 ## Local verification
 
