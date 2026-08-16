@@ -54,6 +54,19 @@
     </div>
   </section>
 
+  <section class="oe_container py-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-5 pr-lg-5 mb-4 mb-lg-0">
+          <p class="text-uppercase font-weight-bold mb-2" style="color: #ad1f46; letter-spacing: 0.08em;">Installed in Odoo</p>
+          <h2 class="font-weight-bold mb-3">Launch inSitu Sales from the Odoo app menu.</h2>
+          <p class="lead text-muted">The Python-free module installs as an Odoo app. Selecting inSitu Sales opens the authenticated application in a new tab, while the integration guide remains available from the app menu.</p>
+        </div>
+        <div class="col-lg-7"><img class="img-fluid rounded shadow" src="odoo-installed-app.png" alt="Installed inSitu Sales Connector app in Odoo 19"/></div>
+      </div>
+    </div>
+  </section>
+
   <section class="oe_container bg-light py-5">
     <div class="container">
       <div class="text-center mx-auto mb-5">
@@ -116,6 +129,27 @@
           <div class="bg-light border-left p-4 mt-4" style="border-color: #714b67 !important;">The authenticated inSitu service initiates synchronization through the configured external API connection. The required parameters must be entered and validated in the inSitu Sales website.</div>
         </div>
         <div class="col-lg-6 mt-4 mt-lg-0"><div class="border rounded p-3"><img class="img-fluid" src="sync-map.png" alt="Data synchronization directions between Odoo and inSitu Sales"/></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="oe_container py-5" style="background-color: #f3eef2;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 mb-4">
+          <div class="bg-white border rounded h-100 p-4">
+            <p class="text-uppercase font-weight-bold mb-2" style="color: #714b67; letter-spacing: 0.08em;">Credentials and access</p>
+            <h2 class="h3 font-weight-bold">Use a dedicated integration user.</h2>
+            <p class="text-muted mb-0">Grant only the Odoo companies and permissions required by the enabled workflows. Treat an API key like a password. Disable the user or revoke its key to stop future external API access.</p>
+          </div>
+        </div>
+        <div class="col-lg-6 mb-4">
+          <div class="bg-white border rounded h-100 p-4">
+            <p class="text-uppercase font-weight-bold mb-2" style="color: #714b67; letter-spacing: 0.08em;">Data handling</p>
+            <h2 class="h3 font-weight-bold">The installed module stores no credentials.</h2>
+            <p class="text-muted mb-0">This Python-free Odoo module contains no synchronization runtime and collects no telemetry. The external inSitu service accesses only the configured Odoo environment and only the objects allowed by the integration user's permissions.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
