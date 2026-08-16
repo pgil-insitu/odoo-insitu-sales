@@ -8,6 +8,9 @@ The marketplace images use inSitu Sales-owned website assets retrieved on
 - `field-invoice-printing.png`: inSitu Sales-owned product artwork supplied for
   the Marketplace listing, showing mobile invoicing, route visibility, proof of
   delivery, and field invoice printing.
+- `odoo-installed-app.png`: screenshot captured from a clean local Odoo 19
+  installation of this module, filtered to the installed inSitu Sales Connector
+  app card.
 - `sync-map.png`: `https://www.insitusales.com/wp-content/uploads/odoo-data-sync.webp`, converted losslessly to PNG for Odoo Apps compatibility.
 - `cover.png`: a 1600x900 composition made from the official inSitu wordmark,
   mobile suite image, and Odoo integration mark published on the inSitu Odoo

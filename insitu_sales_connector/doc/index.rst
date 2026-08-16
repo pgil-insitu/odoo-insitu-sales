@@ -57,11 +57,27 @@ Use a dedicated integration user with only the Sales, Inventory, Accounting,
 and contact permissions required for the data being synchronized. Treat the API
 key like a password and enter it only in the secure integration form.
 
+Troubleshooting connection validation
+-------------------------------------
+
+If the company list does not load or connection validation fails:
+
+#. Confirm the URL uses HTTPS and opens the intended Odoo instance.
+#. Confirm **Database Name** is the technical database name, not a company name.
+#. Confirm the integration user is active and has access to the selected company.
+#. Confirm the password or API key is current and has not been revoked or expired.
+#. Save the authentication settings before loading the company list.
+#. Stop and email support if validation still fails. Do not substitute another
+   database, company, or user merely to make the test pass.
+
 Marketplace app behavior
 ------------------------
 
 The installed app adds an **inSitu Sales** entry to the Odoo app launcher with
 two actions:
+
+Selecting the top-level **inSitu Sales** app opens the authenticated inSitu
+Sales application in a new tab.
 
 ``Open inSitu Sales``
   Opens the authenticated inSitu Sales application in a new tab.
@@ -82,6 +98,23 @@ warehouses, pricing, orders, invoices, payments, taxes, sales terms, sales reps,
 and payment methods according to the enabled inSitu workflows and the access
 rights of the dedicated Odoo integration user. Normal Odoo record rules and
 multi-company access continue to govern all data returned by the external API.
+
+Credentials and data handling
+-----------------------------
+
+The installed Odoo Marketplace module contains no runtime synchronization code,
+stores no credentials, and collects no telemetry. Connection settings are
+entered in the authenticated inSitu Sales integration form and are used by the
+external inSitu service to access only the configured Odoo environment.
+
+The external integration can read or write only the objects permitted by the
+dedicated Odoo user's access rights and enabled inSitu workflows. Disable the
+integration user or revoke its API key to stop future external API access.
+
+Use a unique integration user rather than a personal administrator account.
+Review its company access and permissions periodically, rotate credentials
+according to the customer's security policy, and revoke credentials immediately
+if compromise is suspected.
 
 Support
 -------

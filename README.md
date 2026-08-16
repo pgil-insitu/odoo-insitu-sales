@@ -58,6 +58,17 @@ Use a dedicated integration user with only the Sales, Inventory, Accounting,
 and contact permissions required for the data being synchronized. Treat an API
 key like a password and enter it only in the secure integration form.
 
+### Connection troubleshooting
+
+- Confirm the URL uses HTTPS and opens the intended Odoo database.
+- Confirm the database name is the technical database name, not a company name.
+- Confirm the integration user is active and has access to the selected company.
+- Revoke and replace the API key if it was exposed, expired, or belongs to a
+  disabled user.
+- Save the authentication settings before loading the company list.
+- If the company list does not load or validation fails, stop and email support;
+  do not substitute a different database or company.
+
 ## Install the Marketplace app
 
 Install the release matching the Odoo major version. Open **inSitu Sales** from
@@ -78,6 +89,15 @@ support email declared in the module manifest.
 
 See [doc/index.rst](insitu_sales_connector/doc/index.rst) for administrator and
 integration documentation.
+
+## Maintenance and security
+
+- [CHANGELOG.md](CHANGELOG.md) records Marketplace releases.
+- [SUPPORT.md](SUPPORT.md) defines the supported-version lifecycle.
+- [SECURITY.md](SECURITY.md) documents credentials, data handling, and security
+  reporting.
+- [docs/odoo-api-roadmap.md](docs/odoo-api-roadmap.md) records the external API
+  protocol audit and migration plan.
 
 ## Local verification
 
