@@ -5,7 +5,7 @@
     "category": "Sales/Sales",
     "author": "inSitu Sales",
     "website": "https://www.insitusales.com",
-    "support": "sales@insitusales.com",
+    "support": "support@insitusales.com",
     "license": "Other OSI approved licence",
     "depends": ["base"],
     "data": [
