@@ -4,22 +4,24 @@ inSitu Sales Connector
 Purpose
 -------
 
-The inSitu Sales integration supports Odoo 16 and later supported releases only
-through the external API configuration in the inSitu Sales website. This addon
-is an optional Odoo-side control surface; it is not a separate integration
-method. inSitu Sales is
-operational software for wholesale distributors; it does not sell the
-distributor's products. The integration connects Odoo customers, products,
-pricing, inventory, warehouses, orders, invoices, and payments with authorized
-inSitu workflows.
+The inSitu Sales integration supports Odoo 16 and later supported releases
+through the external API configuration in the inSitu Sales website. The Odoo
+Marketplace app is a Python-free data module that launches the inSitu Sales
+application and official integration guide. It does not create a separate
+integration path or synchronization engine.
+
+inSitu Sales is operational software for wholesale distributors. The external
+integration connects Odoo customers, products, pricing, inventory, warehouses,
+orders, invoices, and payments with authorized inSitu workflows for DSD,
+presales, offline field selling, and B2B ecommerce.
 
 Architecture
 ------------
 
 The authenticated inSitu service initiates synchronization through Odoo's
-remote API. Odoo remains the ERP system of record. This addon intentionally does
-not store an inSitu password, run a second synchronization engine, or publish an
-unauthenticated HTTP endpoint.
+remote API. Odoo remains the ERP system of record. The Marketplace app contains
+no runtime Python code, stores no credentials, and publishes no unauthenticated
+endpoint. Its Odoo menu opens ``https://app.insitusales.com/`` in a new tab.
 
 Supported connection requirement
 --------------------------------
@@ -30,17 +32,13 @@ and validate the required Odoo parameters in the inSitu Sales website.
 Odoo Online SaaS, Odoo.sh, and on-premise environments are supported only when
 they provide the required external API access and all parameters below can be
 entered successfully. Odoo Online external API access requires an Odoo Custom
-plan.
-
-The Odoo Apps availability indicator refers to whether this Python addon can be
-installed on a hosting platform. It does not indicate whether the external
-inSitu Sales integration supports that platform. Hosting type or addon
-installation does not by itself establish support.
+plan. Hosting type or Marketplace app installation does not by itself establish
+integration support.
 
 Configure the integration in inSitu Sales
 -----------------------------------------
 
-#. Sign in to the **inSitu Sales website**.
+#. Sign in at ``https://app.insitusales.com/``.
 #. Open **Integration > Odoo**.
 #. Enter **Username** for a dedicated Odoo integration user.
 #. Enter the user's **Password** or, preferably, an Odoo API key.
@@ -55,77 +53,32 @@ unsupported if the customer cannot provide these parameters, the company list
 cannot be loaded, or the connection cannot be validated through Odoo's external
 API.
 
-Use a dedicated integration user with only the permissions required for the
-data being synchronized. Treat the API key like a password and enter it only in
-the secure integration form.
+Use a dedicated integration user with only the Sales, Inventory, Accounting,
+and contact permissions required for the data being synchronized. Treat the API
+key like a password and enter it only in the secure integration form.
 
-Optional repository addon
--------------------------
+Marketplace app behavior
+------------------------
 
-The addon is an optional Odoo-side control surface for technical teams that can
-install Python addons. It does not replace the required **Integration > Odoo**
-configuration and does not make an otherwise incompatible environment
-supported. Skip this section for Odoo Online SaaS or whenever the customer does
-not manage custom Odoo addons.
+The installed app adds an **inSitu Sales** entry to the Odoo app launcher with
+two actions:
 
-#. Install the branch matching your Odoo major release on Odoo.sh or an
-   on-premise Odoo database.
-#. Create a dedicated internal Odoo user for the integration.
-#. Give the user the ``inSitu Sales / Integration Service`` role.
-#. Grant Contact Creation and only the standard Odoo Sales, Inventory, and
-   Accounting permissions required for the entities enabled in your inSitu
-   integration.
-#. Open ``inSitu Sales > Configuration > Connector Profiles``.
-#. Create one profile for each participating Odoo company and choose the
-   dedicated user.
-#. Select ``Validate Setup``.
-#. Complete **Integration > Odoo** in the inSitu Sales website using the
-   connection steps above.
+``Open inSitu Sales``
+  Opens the authenticated inSitu Sales application in a new tab.
 
-Do not paste API keys into profile notes, sync logs, email, or support tickets.
+``Odoo Integration Guide``
+  Opens the official inSitu Sales Odoo integration page in a new tab.
 
-RPC integration reference
--------------------------
+The app is an Odoo Online-compatible importable/data module. It does not add
+custom Odoo models, scheduled actions, security groups, synchronization logs,
+or API-key storage. Synchronization begins only after the required parameters
+are configured and validated in **Integration > Odoo**.
 
-The model ``insitu.connector.profile`` exposes two authenticated model methods.
+Data and permissions
+--------------------
 
-``get_connector_info()``
-  Returns non-secret readiness data for the active Odoo company.
-
-``report_sync_result(payload)``
-  Persists one synchronization result. The authenticated user must have the
-  Integration Service role and must match the user selected on the company
-  profile (unless the caller is a connector administrator).
-
-Example payload::
-
-    {
-        "entity": "orders",
-        "direction": "to_odoo",
-        "status": "success",
-        "processed_count": 42,
-        "error_count": 0,
-        "message": "Orders synchronized",
-        "started_at": "2026-08-14 12:00:00",
-        "finished_at": "2026-08-14 12:00:04"
-    }
-
-Allowed entities are ``customers``, ``products``, ``inventory``, ``orders``,
-``estimates``, ``invoices``, ``payments``, ``pricing``, ``warehouses``,
-``taxes``, ``sales_terms``, ``sales_reps``, ``payment_methods``, and ``full``.
-Allowed directions are ``to_odoo``, ``from_odoo``, and ``bidirectional``.
-Allowed statuses are ``success``, ``warning``, and ``failed``.
-
-Data retention
---------------
-
-A daily scheduled action removes successful synchronization logs after the
-configured retention period. Warning and failed logs are retained for diagnosis.
-
-Security and multi-company behavior
------------------------------------
-
-Connector profiles and synchronization logs are isolated by Odoo's active
-companies. The addon adds no public routes. It never persists API keys. Normal
-Odoo model access still governs customers, products, orders, invoices, and
-inventory records.
+The external connector can synchronize customers, products, inventory,
+warehouses, pricing, orders, invoices, payments, taxes, sales terms, sales reps,
+and payment methods according to the enabled inSitu workflows and the access
+rights of the dedicated Odoo integration user. Normal Odoo record rules and
+multi-company access continue to govern all data returned by the external API.

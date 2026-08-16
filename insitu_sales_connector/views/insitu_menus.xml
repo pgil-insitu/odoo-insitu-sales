@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="menu_insitu_root" name="inSitu Sales" sequence="35" groups="insitu_sales_connector.group_insitu_integration" web_icon="insitu_sales_connector,static/description/icon.png"/>
-    <menuitem id="menu_insitu_operations" name="Operations" parent="menu_insitu_root" sequence="10"/>
-    <menuitem id="menu_insitu_sync_logs" name="Synchronization Logs" parent="menu_insitu_operations" action="action_insitu_sync_log" sequence="10"/>
-    <menuitem id="menu_insitu_configuration" name="Configuration" parent="menu_insitu_root" sequence="90" groups="insitu_sales_connector.group_insitu_manager"/>
-    <menuitem id="menu_insitu_profiles" name="Connector Profiles" parent="menu_insitu_configuration" action="action_insitu_connector_profile" sequence="10"/>
+    <record id="action_open_insitu_sales" model="ir.actions.act_url">
+        <field name="name">Open inSitu Sales</field>
+        <field name="url">https://app.insitusales.com/</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="action_open_odoo_integration_guide" model="ir.actions.act_url">
+        <field name="name">Odoo Integration Guide</field>
+        <field name="url">https://www.insitusales.com/en/integrations/odoo-integration/</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_insitu_root" name="inSitu Sales" sequence="35" web_icon="insitu_sales_connector,static/description/icon.png"/>
+    <menuitem id="menu_insitu_open" name="Open inSitu Sales" parent="menu_insitu_root" action="action_open_insitu_sales" sequence="10"/>
+    <menuitem id="menu_insitu_guide" name="Odoo Integration Guide" parent="menu_insitu_root" action="action_open_odoo_integration_guide" sequence="20"/>
 </odoo>
