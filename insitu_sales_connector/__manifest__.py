@@ -1,7 +1,7 @@
 {
     "name": "inSitu Sales Connector",
     "summary": "Launch the inSitu Sales external API integration for Odoo",
-    "version": "17.0.1.0.4",
+    "version": "17.0.1.0.5",
     "category": "Sales/Sales",
     "author": "inSitu Sales",
     "website": "https://www.insitusales.com",
