@@ -12,7 +12,7 @@
         <field name="target">new</field>
     </record>
 
-    <menuitem id="menu_insitu_root" name="inSitu Sales" sequence="35" web_icon="insitu_sales_connector,static/description/icon.png"/>
+    <menuitem id="menu_insitu_root" name="inSitu Sales" action="action_open_insitu_sales" sequence="35" web_icon="insitu_sales_connector,static/description/icon.png"/>
     <menuitem id="menu_insitu_open" name="Open inSitu Sales" parent="menu_insitu_root" action="action_open_insitu_sales" sequence="10"/>
     <menuitem id="menu_insitu_guide" name="Odoo Integration Guide" parent="menu_insitu_root" action="action_open_odoo_integration_guide" sequence="20"/>
 </odoo>
