@@ -8,9 +8,14 @@ of the inSitu backend checkout found that the active Odoo service imports
 password or API key, calls `connect()`, and uses methods including `searchRead`,
 `read`, `create`, `update`, and `execute_kw`.
 
-The checked dependency lock resolves `odoo-await` 3.4.1, which depends on
-`xmlrpc` 1.3.2. The current production integration path should therefore be
-treated as legacy XML-RPC until verified otherwise in the deployed artifact.
+The latest fetched backend `origin/develop` revision reviewed for this audit was
+`48d7606deefa` on 2026-08-16. It still imports `odoo-await`, declares
+`odoo-await` `^3.3.0`, constructs the same client, and calls `execute_kw`.
+That remote branch does not track a dependency lockfile. The older local
+checkout's lock resolved `odoo-await` 3.4.1 to `xmlrpc` 1.3.2, but the exact
+dependency resolved by the deployed artifact must be verified independently.
+The active integration path should therefore be treated as legacy XML-RPC until
+deployment evidence proves otherwise.
 
 ## Risk
 
@@ -21,7 +26,8 @@ before those target releases.
 
 ## Migration plan
 
-1. Confirm the dependency and endpoint behavior in the deployed backend build.
+1. Pin and lock the Odoo transport dependency, then confirm the dependency and
+   endpoint behavior in the deployed backend build.
 2. Inventory every Odoo model, method, context, company filter, pagination path,
    and custom action used by the current service.
 3. Build a transport interface so legacy XML-RPC and JSON-2 clients can share
