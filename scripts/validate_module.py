@@ -49,6 +49,8 @@ def main() -> None:
         )
     if manifest["license"] != "Other OSI approved licence":
         fail("manifest must identify the repository's Apache-2.0 license")
+    if manifest.get("support") != "support@insitusales.com":
+        fail("manifest support requests must route to support@insitusales.com")
     if manifest["depends"] != ["base"]:
         fail("Odoo Online launcher must depend only on base")
     if manifest["data"] != ["views/insitu_menus.xml"]:
@@ -108,6 +110,8 @@ def main() -> None:
         "Password or API key",
         "Database Name",
         "Company",
+        "mailto:support@insitusales.com",
+        "Email Support",
     ):
         if required_text not in listing_text:
             fail(f"marketplace description missing: {required_text}")
