@@ -26,7 +26,5 @@ services:
       - --db_password=odoo
       - --addons-path=/usr/lib/python3/dist-packages/odoo/addons,/mnt/extra-addons
       - --init=insitu_sales_connector
-      - --test-enable
-      - --test-tags=/insitu_sales_connector
       - --stop-after-init
-      - --log-level=test
+      - --log-level=warn
